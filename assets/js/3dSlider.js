@@ -34,6 +34,7 @@
             let firstTranslateY = 0;
             let lastTranslateY = 0;
             let currentItemIndex = activeItemIndex-1;
+            let currentItemIndex2d = activeItemIndex-1;
             settings.data.forEach(function (item,i) {
                 const x = (activeItemIndex-1)*dx-i*dx;
                 const y = -i*dy;
@@ -68,7 +69,7 @@
                 const offsetLeft = (sliderChild.offset().left-sliderParent.offset().left)+sliderChild[0].getBoundingClientRect().width;
                 const offsetTop = (sliderChild.offset().top-sliderParent.offset().top)+sliderChild[0].getBoundingClientRect().height;
                 parentWidth = parentWidth<offsetLeft?offsetLeft:parentWidth;
-                parentHeight = parentHeight<offsetTop?offsetTop:parentWidth;
+                if(i<7) parentHeight = parentHeight<offsetTop?offsetTop:parentWidth;
             })
             settings.data.forEach(function (item,i) {
                 const a = activeItemIndex-1-i;
@@ -93,18 +94,25 @@
                     sliderChild2d.addClass('active-slider')
                 }
             })
+            if(this[0].offsetLeft+parentWidth>$(window).width()){
+                console.log("parentSize.left+parentWidth",parentWidth,this[0].offsetLeft)
+                console.log("$(window).width()",$(window).width())
+                parentWidth = parentWidth - (this[0].offsetLeft+parentWidth-$(window).width())
+            }
             sliderParent2d.css({
                 'height': height2d+'px',
                 'overflow':'hidden',
                 display:'none'
             });
+
             sliderParent.css({
                 'width': parentWidth+"px",
                 'height': (parentHeight)+"px",
                 'overflow':'hidden',
                 display:'none'
             });
-            // lc.after(fcChild)
+            $(this)[0].getBoundingClientRect();
+// lc.after(fcChild)
             /*console.log(`translateX(${(activeItemIndex-1)*dx-dx}px) translateY(${-dy}px) perspective(${perspective}px) translateZ(${-((activeItemIndex-1)*dz-dz)})`)
             $(`ul.slider-3d > li.slider-item:nth-child(1)`).css({
                 'top': `${$("ul.slider-3d > li.slider-item:nth-child(1)").outerHeight()}px`,
@@ -166,7 +174,8 @@
                     fc.before(lcChild)
                     // fc.before()
                     $(`ul.slider-3d > li.slider-item`).removeClass('active-slider');
-                    currentItemIndex = currentItemIndex-1<0?settings.data.length-1:currentItemIndex-1;
+                    // currentItemIndex = currentItemIndex+1>=settings.data.length?0:currentItemIndex+1;
+                    console.log("current :", currentItemIndex);
                     $(`ul.slider-3d > li.slider-item:nth-child(n+2)`).each(function (i) {
                         if(i===settings.data.length - 1){
                             // let [tx, ty, tz, top, zIndex] = getXYZTZ(fc)
@@ -226,7 +235,7 @@
                     fc.before(lcChild)
                     // fc.before()
                     $(`ul.slider-2d > li.slider-item`).removeClass('active-slider');
-                    currentItemIndex = currentItemIndex-1<0?settings.data.length-1:currentItemIndex-1;
+                    // currentItemIndex = currentItemIndex-1<0?settings.data.length-1:currentItemIndex-1;
                     $(`ul.slider-2d > li.slider-item:nth-child(n+2)`).each(function (i) {
                         if(i===settings.data.length - 1){
                             // let [tx, ty, tz, top, zIndex] = getXYZTZ(fc)
@@ -236,8 +245,8 @@
                                 'transition': 'all .5s'
                             })
                             $(this).remove();
-                            currentItemIndex = currentItemIndex-1<0?settings.data.length-1:currentItemIndex-1;
-                            settings.onItemActive.call(plugin,settings.data[currentItemIndex])
+                            currentItemIndex2d = currentItemIndex2d-1<0?settings.data.length-1:currentItemIndex2d-1;
+                            settings.onItemActive.call(plugin,settings.data[currentItemIndex2d])
                         } else {
                             const a = activeItemIndex-1-(i+1);
                             const x = -a * width2d +(i+1)*20;
