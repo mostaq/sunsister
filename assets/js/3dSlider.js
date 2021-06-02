@@ -158,7 +158,7 @@
                 console.log("rect",rect);
                 const tWidth = rect.left+parentWidth;
                 if(tWidth>$(window).width()){
-                    return tWidth-$(window).width()+2;
+                    return tWidth-$(window).width()+4;
                 }
                 return 0;
             }
