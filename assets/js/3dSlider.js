@@ -129,8 +129,10 @@
                 timerId2d = startSlider2d();
                 $(plugin).addClass(" d-flex").addClass("justify-content-center")
             }else{
+                console.log("getParentPosition()",getParentPosition());
                 sliderParent2d.css("display","none");
                 sliderParent.css("display","block");
+                sliderParent.css({"display": "block","right":getParentPosition()+"px"});
                 timerId = startSlider3d();
                 $(plugin).removeClass(" d-flex").removeClass("justify-content-center")
             }
@@ -146,11 +148,20 @@
                     clearInterval(timerId);
                     clearInterval(timerId2d);
                     sliderParent2d.css("display","none");
-                    sliderParent.css("display","block");
+                    sliderParent.css({"display": "block","right":getParentPosition()+"px"});
                     timerId = startSlider3d();
                     $(sParent).removeClass(" d-flex").removeClass("justify-content-center")
                 }
             })
+            function getParentPosition(){
+                const rect = sliderParent[0].getBoundingClientRect();
+                console.log("rect",rect);
+                const tWidth = rect.left+parentWidth;
+                if(tWidth>$(window).width()){
+                    return tWidth-$(window).width();
+                }
+                return 0;
+            }
             function startSlider3d(){
                 return setInterval(function () {
                     const fc = $(`ul.slider-3d > li.slider-item:nth-child(1)`);
