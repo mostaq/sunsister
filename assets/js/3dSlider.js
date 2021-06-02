@@ -127,12 +127,12 @@
                 sliderParent.css("display","none");
                 sliderParent2d.css("display","block");
                 timerId2d = startSlider2d();
-                $(this).addClass(" d-flex").addClass("justify-content-center")
+                $(plugin).addClass(" d-flex").addClass("justify-content-center")
             }else{
                 sliderParent2d.css("display","none");
                 sliderParent.css("display","block");
                 timerId = startSlider3d();
-                $(this).removeClass(" d-flex").removeClass("justify-content-center")
+                $(plugin).removeClass(" d-flex").removeClass("justify-content-center")
             }
             $(window).resize(function (){
                 if($(this).width()<991){

@@ -40,9 +40,9 @@
         /*overflow-y: auto;*/
         overflow: visible;
         height: auto;
-        position: absolute;
+        position: relative;
         top: 0px;
-        right: 223px;
+        right: 0px;
         z-index: 9;
     }
     
