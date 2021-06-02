@@ -17,6 +17,10 @@
 }
 
 @media only screen and (min-width: 991px) {
+
+    .flex-column-max{
+        flex-direction: row!important;
+    }
     /*Sub Menu*/
     ul.sub-menu {
         position: absolute;
@@ -111,6 +115,10 @@
 
 
 @media only screen and (max-width: 991px) {
+
+    .flex-column-max{
+        flex-direction: column!important;
+    }
     /* .banner-area .banner-photo::after {
         position: absolute;
         left: 0;

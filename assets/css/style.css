@@ -1807,3 +1807,24 @@ span.recruit-date {
 .members-card-thmub-slider .card-item.active::after, .members-card-thmub-slider .card-item:hover::after {
     opacity: 0.7;
 }
+
+#up-button:after{
+    content: '\25B2';
+    position: absolute;
+    font-size: 30px;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    color: #FFFFFF;
+}
+#down-button:after{
+    content: '\25BC';
+    position: absolute;
+    font-size: 30px;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    color: #FFFFFF;
+}
