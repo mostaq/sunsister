@@ -165,7 +165,7 @@
                 setUpDownButtonPosition();
                 timerId = startSlider3d();
                 $(plugin).removeClass(" d-flex").removeClass("justify-content-center")
-                sliderParent.css({"right": getParentPosition() + "px"})
+                sliderParentDiv.css({"right": getParentPosition() + "px"})
             }
 
             $(window).resize(function () {
@@ -182,10 +182,11 @@
                     clearInterval(timerId2d);
                     sliderParent2d.css("display", "none");
                     sliderParentDiv.css("display", "block");
-                    sliderParent.css({"display": "block", "right": getParentPosition() + "px"});
+                    sliderParent.css({"display": "block"});
                     setUpDownButtonPosition();
                     timerId = startSlider3d();
                     $(sParent).removeClass(" d-flex").removeClass("justify-content-center")
+                    sliderParentDiv.css({"right": getParentPosition() + "px"})
                 }
             })
 
