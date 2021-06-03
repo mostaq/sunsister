@@ -193,7 +193,7 @@
                 const rect = $(`ul.slider-3d > li.slider-item:nth-child(${activeItemIndex})`)[0].getBoundingClientRect();
                 upButton.css({
                     left: '50px',
-                    top: (position.top - 60) + "px"
+                    top: (position.top - 100) + "px"
                 })
                 downButton.css({
                     left: '50px',
