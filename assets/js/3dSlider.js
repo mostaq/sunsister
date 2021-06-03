@@ -161,10 +161,11 @@
                 console.log("getParentPosition()", getParentPosition());
                 sliderParent2d.css("display", "none");
                 sliderParentDiv.css("display", "block");
-                sliderParent.css({"display": "block", "right": getParentPosition() + "px"});
+                sliderParent.css({"display": "block"});
                 setUpDownButtonPosition();
                 timerId = startSlider3d();
                 $(plugin).removeClass(" d-flex").removeClass("justify-content-center")
+                sliderParent.css({"right": getParentPosition() + "px"})
             }
 
             $(window).resize(function () {
@@ -203,7 +204,7 @@
             }
 
             function getParentPosition() {
-                const rect = sliderParent[0].getBoundingClientRect();
+                const rect = sliderParentDiv[0].getBoundingClientRect();
                 console.log("rect", rect);
                 const tWidth = rect.left + parentWidth;
                 if (tWidth > $(window).width()) {
